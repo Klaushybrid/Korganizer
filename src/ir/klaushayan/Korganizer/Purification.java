@@ -18,7 +18,7 @@ import org.dom4j.io.SAXReader;
 public class Purification implements Callable<ArrayList<String>> {
 	public final File XMLFile = new File(getpackname());
 	private ArrayList<String> StringArray;
-	private static ArrayList<String> LoweredString = new ArrayList<>();
+	private ArrayList<String> LoweredString = new ArrayList<>();
 
 	public Purification(ArrayList<String> StringArray) {
 		this.StringArray = StringArray;

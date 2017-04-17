@@ -1,7 +1,6 @@
 package main;
-import ir.klaushayan.Korganizer.Foldering;
-import ir.klaushayan.Korganizer.KFiles;
-import ir.klaushayan.Korganizer.Purification;
+import ir.klaushayan.Korganizer.*;
+
 //very simple example
 public class Main {
 

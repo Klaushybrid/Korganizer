@@ -8,11 +8,11 @@ import java.util.ListIterator;
 import javax.swing.JFileChooser;
 
 public class KFiles {
-	private static ArrayList<String> Addresses = new ArrayList<>();
-	private static ArrayList<String> RootAddresses = new ArrayList<>();
-	private static ArrayList<String> NamesListString = new ArrayList<>();
+	private ArrayList<String> Addresses = new ArrayList<>();
+	private ArrayList<String> RootAddresses = new ArrayList<>();
+	private ArrayList<String> NamesListString = new ArrayList<>();
 
-	public static ArrayList<String> getFiles() {
+	public ArrayList<String> getFiles() {
 		JFileChooser chooser = new JFileChooser();
 		chooser.setMultiSelectionEnabled(true);
 		int returnval = chooser.showOpenDialog(null);
@@ -30,7 +30,7 @@ public class KFiles {
 
 	}
 
-	private static ArrayList<String> FiletoString(ArrayList<File> NamesList) {
+	private ArrayList<String> FiletoString(ArrayList<File> NamesList) {
 		ListIterator litr = NamesList.listIterator();
 		int i = 0;
 
