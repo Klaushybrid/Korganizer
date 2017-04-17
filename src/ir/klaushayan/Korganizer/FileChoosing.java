@@ -7,7 +7,7 @@ import java.util.ListIterator;
 
 import javax.swing.JFileChooser;
 
-public class KFiles {
+public class FileChoosing {
 	private ArrayList<String> Addresses = new ArrayList<>();
 	private ArrayList<String> RootAddresses = new ArrayList<>();
 	private ArrayList<String> NamesListString = new ArrayList<>();

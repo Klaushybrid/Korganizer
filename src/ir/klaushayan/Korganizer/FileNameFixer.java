@@ -15,12 +15,12 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-public class Purification implements Callable<ArrayList<String>> {
+public class FileNameFixer implements Callable<ArrayList<String>> {
 	public final File XMLFile = new File(getpackname());
 	private ArrayList<String> StringArray;
 	private ArrayList<String> LoweredString = new ArrayList<>();
 
-	public Purification(ArrayList<String> StringArray) {
+	public FileNameFixer(ArrayList<String> StringArray) {
 		this.StringArray = StringArray;
 
 	}
@@ -54,7 +54,7 @@ public class Purification implements Callable<ArrayList<String>> {
 			try {
 
 				ExecutorService EXTSERV = Executors.newFixedThreadPool(1);
-				Future<ArrayList<String>> future = EXTSERV.submit(new Purification(StringArray));
+				Future<ArrayList<String>> future = EXTSERV.submit(new FileNameFixer(StringArray));
 				StringArray = future.get();
 
 			} catch (Exception e) {
@@ -79,7 +79,7 @@ public class Purification implements Callable<ArrayList<String>> {
 				ToRemove.add(itemel.getTextTrim().toString());
 			}
 		} catch (Exception docE) {
-			JOptionPane.showMessageDialog(null, "Purifier.xml does not exist, either create one or redownload");
+			JOptionPane.showMessageDialog(null, "FixerPattern.xml does not exist, either create one or redownload");
 			System.exit(0);
 
 		}
@@ -129,9 +129,9 @@ public class Purification implements Callable<ArrayList<String>> {
 	}
 
 	private String getpackname() {
-		String string = (Purification.class.getPackage().getName().toString().replace(".", "/")
-				+ "/resources/options/Purifier.xml");
-		return Purification.class.getResource("/" + string).toString().replace("file:", "");
+		String string = (FileNameFixer.class.getPackage().getName().toString().replace(".", "/")
+				+ "/resources/options/FixerPattern.xml");
+		return FileNameFixer.class.getResource("/" + string).toString().replace("file:", "");
 	}
 
 }

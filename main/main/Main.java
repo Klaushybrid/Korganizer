@@ -5,8 +5,8 @@ import ir.klaushayan.Korganizer.*;
 public class Main {
 
 	public static void main(String[] args) {
-		KFiles kf = new KFiles();
-		Purification p = new Purification(kf.getFiles());
+		FileChoosing kf = new FileChoosing();
+		FileNameFixer p = new FileNameFixer(kf.getFiles());
 		Foldering foldering = new Foldering(kf.getFileLoc(), kf.getRootLoc(), p.Purify(true));
 		foldering.Do();
 		

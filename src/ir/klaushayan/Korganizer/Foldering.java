@@ -30,7 +30,7 @@ public class Foldering implements Runnable {
 		for (int i = 0; i < StringArray.size(); i++) {
 			int lastindex = FileLoc.get(i).toString().lastIndexOf("/");
 			NamesListString
-			.add(FileLoc.get(i).toString().replace(FileLoc.get(i).toString().substring(0, lastindex + 1), ""));
+					.add(FileLoc.get(i).toString().replace(FileLoc.get(i).toString().substring(0, lastindex + 1), ""));
 			Path source = Paths.get(FileLoc.get(i).trim());
 			Path dir = Paths.get(Destination.get(i) + StringArray.get(i) + "/");
 			Path dest = Paths.get(Destination.get(i) + StringArray.get(i) + "/" + NamesListString.get(i));
