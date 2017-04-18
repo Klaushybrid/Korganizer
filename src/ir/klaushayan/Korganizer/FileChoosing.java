@@ -17,7 +17,6 @@ public class FileChoosing {
 		chooser.setMultiSelectionEnabled(true);
 		int returnval = chooser.showOpenDialog(null);
 		if (returnval == chooser.APPROVE_OPTION) {
-
 			ArrayList<File> NamesList = new ArrayList<>(Arrays.asList(chooser.getSelectedFiles()));
 			ArrayList<String> StringNamesList = new ArrayList<>();
 

@@ -15,6 +15,8 @@ public class Foldering implements Runnable {
 		this.FileLoc = FileLoc;
 	}
 
+	
+	//CALL Do() INSTEAD OF run() !!!!!
 	public void Do() {
 		if (StringArray == null) {
 		} else {
@@ -24,7 +26,7 @@ public class Foldering implements Runnable {
 		}
 
 	}
-
+	
 	public void run() {
 
 		for (int i = 0; i < StringArray.size(); i++) {

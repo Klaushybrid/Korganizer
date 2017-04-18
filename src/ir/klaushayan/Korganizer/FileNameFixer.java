@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -17,8 +18,8 @@ import org.dom4j.io.SAXReader;
 
 public class FileNameFixer implements Callable<ArrayList<String>> {
 	public final File XMLFile = new File(getpackname());
-	private ArrayList<String> StringArray;
-	private ArrayList<String> LoweredString = new ArrayList<>();
+	private static ArrayList<String> StringArray;
+	private static ArrayList<String> LoweredString = new ArrayList<>();
 
 	public FileNameFixer(ArrayList<String> StringArray) {
 		this.StringArray = StringArray;
@@ -30,7 +31,6 @@ public class FileNameFixer implements Callable<ArrayList<String>> {
 		return Purify(false);
 	}
 
-	@SuppressWarnings("unchecked")
 	public ArrayList<String> Purify(boolean ToRemove) {
 		getpackname();
 		if (StringArray == null) {
@@ -51,17 +51,17 @@ public class FileNameFixer implements Callable<ArrayList<String>> {
 			i++;
 		}
 		if (ToRemove) {
+			ExecutorService EXTSERV = Executors.newFixedThreadPool(1);
+			Future<ArrayList<String>> future = EXTSERV.submit(new FileNameFixer(StringArray));
 			try {
-
-				ExecutorService EXTSERV = Executors.newFixedThreadPool(1);
-				Future<ArrayList<String>> future = EXTSERV.submit(new FileNameFixer(StringArray));
 				StringArray = future.get();
-
-			} catch (Exception e) {
-				System.out.println(e);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
 			}
-		}
 
+		}
 		return StringArray;
 	}
 
